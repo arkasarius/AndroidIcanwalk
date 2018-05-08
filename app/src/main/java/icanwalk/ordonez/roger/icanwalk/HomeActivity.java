@@ -18,7 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, PerfilFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PerfilFragment.OnFragmentInteractionListener, EventsFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +90,10 @@ public class HomeActivity extends AppCompatActivity
             transaction.replace(R.id.fragment, perfil);
             transaction.commit();
         } else if (id == R.id.nav_gallery) {
-
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            Fragment perfil = EventsFragment.newInstance("bla", "bla");
+            transaction.replace(R.id.fragment, perfil);
+            transaction.commit();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -110,4 +113,6 @@ public class HomeActivity extends AppCompatActivity
     public void onFragmentInteraction(Uri uri) {
         Log.i("test", "PerfilFragment.onFragmentInteraction");
     }
+
+
 }
