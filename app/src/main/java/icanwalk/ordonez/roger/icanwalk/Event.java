@@ -12,5 +12,8 @@ public class Event {
     limit usuaris		[Int]
     Informació d’interes	[String]
     */
-
+    private String nom;
+    private String direccio;
+    private String creador;
+    private Latlon posicio;
 }
