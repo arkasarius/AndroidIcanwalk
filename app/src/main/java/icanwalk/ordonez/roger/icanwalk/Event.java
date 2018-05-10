@@ -6,17 +6,19 @@ import java.util.List;
 public class Event {
 
 
+
+
     /*
-        Nom event		[string]
-        Nom direcció		[String]
-        Usuari creador		[Usuari ID]
-        Posició (lat/long)	[Double,Double]
-        Data			[dd, mm, yyyy, hh, mm, ss]
-        Llista usuaris registrats	[Usuari IDs]
-        preu			[Float]
-        limit usuaris		[Int]
-        Informació d’interes	[String] --> descripccioCurta, descripcio LLarga
-        */
+            Nom event		[string]
+            Nom direcció		[String]
+            Usuari creador		[Usuari ID]
+            Posició (lat/long)	[Double,Double]
+            Data			[dd, mm, yyyy, hh, mm, ss]
+            Llista usuaris registrats	[Usuari IDs]
+            preu			[Float]
+            limit usuaris		[Int]
+            Informació d’interes	[String] --> descripccioCurta, descripcio LLarga
+            */
     private String nom;
     private String direccio;
     private String creador;
@@ -27,8 +29,9 @@ public class Event {
     private double limitUsuaris;
     private String descripcioCurta;
     private String descripcioLlarga;
+    private Latlon geolocalitzacio;
 
-    public Event(String nom, String direccio, String creador, Latlon posicio, Date data, List<String> usuarisRegistrats, double preu, double limitUsuaris, String descripcioCurta, String descripcioLlarga) {
+    public Event(String nom, String direccio, String creador, Latlon posicio, Date data, List<String> usuarisRegistrats, double preu, double limitUsuaris, String descripcioCurta, String descripcioLlarga, Latlon geolocalitzacio) {
         this.nom = nom;
         this.direccio = direccio;
         this.creador = creador;
@@ -39,6 +42,7 @@ public class Event {
         this.limitUsuaris = limitUsuaris;
         this.descripcioCurta = descripcioCurta;
         this.descripcioLlarga = descripcioLlarga;
+        this.geolocalitzacio = geolocalitzacio;
     }
 
     public String getNom() {
@@ -121,4 +125,11 @@ public class Event {
         this.descripcioLlarga = descripcioLlarga;
     }
 
+    public Latlon getGeolocalitzacio() {
+        return geolocalitzacio;
+    }
+
+    public void setGeolocalitzacio(Latlon geolocalitzacio) {
+        this.geolocalitzacio = geolocalitzacio;
+    }
 }
