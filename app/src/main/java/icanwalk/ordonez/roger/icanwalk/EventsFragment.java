@@ -3,10 +3,26 @@ package icanwalk.ordonez.roger.icanwalk;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 
 /**
@@ -58,6 +74,47 @@ public class EventsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("eventos");
+/*    private String nom;
+    private String direccio;
+    private String creador;
+    private Latlon posicio;
+    private Date data;
+    private List<String> usuarisRegistrats;
+    private double preu;
+    private double limitUsuaris;
+    private String descripcioCurta;
+    private String descripcioLlarga;
+    private Latlon geolocalitzacio;*/
+        Date data = new Date();
+        List<String> usuaris= new ArrayList<String>();
+        usuaris.add("usuari1");
+        usuaris.add("usuari2");
+        Event event = new Event("roger","direccio","creador",new Latlon(3.0,4.0),data,usuaris,30.0,10.0,"descripcio Curta","descripcio LLarga",new Latlon(3.0,5.0));
+
+        // myRef.setValue(event);
+
+        myRef.push().setValue(event);
+        // Read from the database
+        /*
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                Event value = dataSnapshot.getValue(Event.class);
+                Toast.makeText(getContext(), value.gestNom(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+            }
+        });
+*/
     }
 
     @Override

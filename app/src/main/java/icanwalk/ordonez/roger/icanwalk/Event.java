@@ -31,6 +31,7 @@ public class Event {
     private String descripcioLlarga;
     private Latlon geolocalitzacio;
 
+    public Event(){}
     public Event(String nom, String direccio, String creador, Latlon posicio, Date data, List<String> usuarisRegistrats, double preu, double limitUsuaris, String descripcioCurta, String descripcioLlarga, Latlon geolocalitzacio) {
         this.nom = nom;
         this.direccio = direccio;
@@ -44,6 +45,7 @@ public class Event {
         this.descripcioLlarga = descripcioLlarga;
         this.geolocalitzacio = geolocalitzacio;
     }
+
 
     public String getNom() {
         return nom;

@@ -6,6 +6,7 @@ class Latlon {
     private Double lat;
     private Double lon;
 
+    public Latlon(){}
     Latlon(Double lat, Double lon) {
         this.lat = lat;
         this.lon = lon;

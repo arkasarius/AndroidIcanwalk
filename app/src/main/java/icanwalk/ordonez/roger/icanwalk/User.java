@@ -31,7 +31,7 @@ public class User {
     private String bio;
 
     //Constructor
-
+    public User(){}
     public User(String nom, String cognom1, String cognom2, String correo, String contrasenya, List<Event> events, List<Gos> gossos, List<Contacts> contactes, boolean empresa, String bio) {
         this.nom = nom;
         this.cognom1 = cognom1;

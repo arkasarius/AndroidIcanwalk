@@ -12,7 +12,7 @@ public class Gos {
     private String amo;
     private String bio;
 
-
+    public Gos(){}
     public Gos(String nom, String amo, String bio) {
         this.nom = nom;
         this.amo = amo;

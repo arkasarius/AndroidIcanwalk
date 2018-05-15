@@ -5,6 +5,7 @@ public class Contacts {
 
     private String contact;
 
+    public Contacts() {}
     public Contacts(String contact) {
         this.contact = contact;
     }
