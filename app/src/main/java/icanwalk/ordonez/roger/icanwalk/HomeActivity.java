@@ -18,7 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, PerfilFragment.OnFragmentInteractionListener, EventsFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PerfilFragment.OnFragmentInteractionListener, EventsFragment.OnFragmentInteractionListener, DetalleEvento.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,5 +115,12 @@ public class HomeActivity extends AppCompatActivity
         Log.i("test", "PerfilFragment.onFragmentInteraction");
     }
 
+
+    public void fragmentJumpDetalle(){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        Fragment perfil = DetalleEvento.newInstance("bla", "bla");
+        transaction.replace(R.id.fragment, perfil);
+        transaction.commit();
+    }
 
 }
