@@ -133,24 +133,44 @@ public class EventsFragment extends Fragment {
         eventos = new ArrayList<>();
         recyclerView=view.findViewById(R.id.eventsID);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        PopulateEventos();
+
         EventsAdapter adapter = new EventsAdapter(eventos);
+        PopulateEventos(adapter);
         recyclerView.setAdapter(adapter);
         // Inflate the layout for this fragment
         return view;
     }
 
-    private void PopulateEventos() {
+    private void PopulateEventos(final EventsAdapter adapter) {
         /*
         * new Event("roger","direccio","creador",new Latlon(3.0,4.0),data,usuaris,30.0,10.0,"descripcio Curta","descripcio LLarga",new Latlon(3.0,5.0));
 
-         * */
+         *
         Date data = new Date();
         List<String> usuaris= new ArrayList<String>();
         usuaris.add("usuari1");
         usuaris.add("usuari2");
         eventos.add(new Event("roger","direccio","creador",new Latlon(3.0,4.0),data,usuaris,30.0,10.0,"descripcio Curta","descripcio LLarga",new Latlon(3.0,5.0)));
         eventos.add(new Event("Puntacana","direccio","creador",new Latlon(3.0,4.0),data,usuaris,30.0,10.0,"descripcio Curta","descripcio LLarga",new Latlon(3.0,5.0)));
+        */
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("eventos");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                eventos.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Event event = snapshot.getValue(Event.class);
+                    eventos.add(event);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
