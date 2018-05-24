@@ -7,7 +7,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 
 /**
@@ -23,12 +34,13 @@ public class DetalleEvento extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private static final int ARG_POSITION = 0;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     private int positionEvento;
+    ArrayList<Event> eventos;
     private OnFragmentInteractionListener mListener;
 
     public DetalleEvento() {
@@ -72,12 +84,51 @@ public class DetalleEvento extends Fragment {
             positionEvento = getArguments().getInt("exampleInt",-1);
            // Toast.makeText(getContext(), Integer.toString(positionEvento), Toast.LENGTH_SHORT).show();
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ///display info data
+
+        final FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("eventos");
+        eventos = new ArrayList<>();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                eventos.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Event event = snapshot.getValue(Event.class);
+                    eventos.add(event);
+                }
+                Event a = eventos.get(positionEvento);
+                //Toast.makeText(getContext(), Integer.toString(positionEvento), Toast.LENGTH_SHORT).show();
+                TextView nomevent,direccio,dataevent,usuaricreador,descripcio,usuaris;
+                nomevent=getActivity().findViewById(R.id.idnomevent);
+                direccio=getActivity().findViewById(R.id.iddireccio);
+                dataevent=getActivity().findViewById(R.id.iddata);
+                usuaricreador=getActivity().findViewById(R.id.idcreador);
+                descripcio=getActivity().findViewById(R.id.iddescripcio);
+                usuaris=getActivity().findViewById(R.id.idusers);
+
+                nomevent.setText(a.getNom());
+                direccio.setText(a.getDireccio());
+                dataevent.setText(a.getDiaMesAny()+"  "+a.getTimeHoraMinutes());
+                usuaricreador.setText(a.getCreador());
+                descripcio.setText(a.getDescripcioLlarga());
+                usuaris.setText(a.getUsuarisRegistrats().size()+"/"+a.getLimitUsuaris());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         return inflater.inflate(R.layout.fragment_detalle_evento, container, false);
     }
 

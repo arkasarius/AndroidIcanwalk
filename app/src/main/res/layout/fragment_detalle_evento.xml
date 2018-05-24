@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dp"
+    android:orientation="vertical"
     tools:context=".DetalleEvento">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="detalle evento" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/a" />
+
+        <TextView
+            android:id="@+id/PreuID"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="right"
+            android:paddingRight="20dp"
+            android:paddingTop="150dp"
+            android:text="25€"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="30dp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="10dp"
+        >
+
+        <TextView
+            android:id="@+id/idnomevent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom del event" />
+
+        <TextView
+            android:id="@+id/iddireccio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="25dp"
+            android:text="direccio" />
+        <TextView
+            android:id="@+id/iddata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="50dp"
+            android:text="data ( 25/15/2018 ) (11:11)" />
+        <TextView
+            android:id="@+id/idcreador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="75dp"
+            android:text="Usuari creador" />
+        <TextView
+            android:id="@+id/iddescripcio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="110dp"
+            android:text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. " />
+        <TextView
+            android:id="@+id/idusers"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="bottom"
+            android:text="5/15" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:text="Participar" />
+    </FrameLayout>
+
+</LinearLayout>
