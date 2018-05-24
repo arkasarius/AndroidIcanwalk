@@ -60,7 +60,15 @@ public class Event {
     public String getTimeHoraMinutes(){
         int hour = data.getHours();
         int minutes = data.getMinutes();
-        String a=Integer.toString(hour)+":"+Integer.toString(minutes);
+        String h = Integer.toString(hour);
+        if(h.length()<2){
+            h="0"+h;
+        }
+        String m = Integer.toString(minutes);
+        if (m.length()<2){
+            m="0"+m;
+        }
+        String a=h+":"+m;
         return a;
     }
 

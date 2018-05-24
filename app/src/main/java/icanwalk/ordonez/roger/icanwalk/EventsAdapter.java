@@ -31,7 +31,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         holder.hora.setText(eventos.get(position).getTimeHoraMinutes());
         holder.direccio.setText(eventos.get(position).getDireccio());
         holder.descripcio.setText(eventos.get(position).getDescripcioCurta());
-        holder.preu.setText(Double.toString(eventos.get(position).getPreu()));
+        holder.preu.setText(Double.toString(eventos.get(position).getPreu())+"€");
     }
 
     @Override
