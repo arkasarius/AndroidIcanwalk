@@ -137,6 +137,12 @@ public class EventsFragment extends Fragment {
         EventsAdapter adapter = new EventsAdapter(eventos);
         PopulateEventos(adapter);
         recyclerView.setAdapter(adapter);
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), eventos.get(recyclerView.getChildAdapterPosition(v)).getNom(), Toast.LENGTH_SHORT).show();
+            }
+        });
         // Inflate the layout for this fragment
         return view;
     }

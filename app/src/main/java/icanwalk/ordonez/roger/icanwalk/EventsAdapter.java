@@ -9,10 +9,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
+public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> implements View.OnClickListener{
 
 
     ArrayList<Event> eventos;
+    private View.OnClickListener listener;
 
     public EventsAdapter(ArrayList<Event> events){
         eventos=events;
@@ -21,6 +22,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     @Override
     public EventsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardlayout,null,false);
+        view.setOnClickListener(this);
         return new ViewHolder(view);
     }
 
@@ -37,6 +39,17 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return eventos.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener= listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(listener!=null){
+            listener.onClick(v);
+        }
     }
 
 
