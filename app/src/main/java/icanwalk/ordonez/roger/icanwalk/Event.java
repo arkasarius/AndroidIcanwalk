@@ -1,5 +1,6 @@
 package icanwalk.ordonez.roger.icanwalk;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -44,6 +45,23 @@ public class Event {
         this.descripcioCurta = descripcioCurta;
         this.descripcioLlarga = descripcioLlarga;
         this.geolocalitzacio = geolocalitzacio;
+    }
+
+    public String getDiaMesAny(){
+        String a;
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(data);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        a=Integer.toString(day)+"/"+Integer.toString(month+1)+"/"+Integer.toString(year);
+        return a;
+    }
+    public String getTimeHoraMinutes(){
+        int hour = data.getHours();
+        int minutes = data.getMinutes();
+        String a=Integer.toString(hour)+":"+Integer.toString(minutes);
+        return a;
     }
 
 

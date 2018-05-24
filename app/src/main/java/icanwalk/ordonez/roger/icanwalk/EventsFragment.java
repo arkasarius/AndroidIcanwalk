@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +46,9 @@ public class EventsFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    ArrayList<Event> eventos;
+    RecyclerView recyclerView;
 
     public EventsFragment() {
         // Required empty public constructor
@@ -87,7 +92,8 @@ public class EventsFragment extends Fragment {
     private double limitUsuaris;
     private String descripcioCurta;
     private String descripcioLlarga;
-    private Latlon geolocalitzacio;*/
+    private Latlon geolocalitzacio;
+
         Date data = new Date();
         List<String> usuaris= new ArrayList<String>();
         usuaris.add("usuari1");
@@ -115,13 +121,37 @@ public class EventsFragment extends Fragment {
             }
         });
 */
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view=inflater.inflate(R.layout.fragment_events, container, false);
+        eventos = new ArrayList<>();
+        recyclerView=view.findViewById(R.id.eventsID);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        PopulateEventos();
+        EventsAdapter adapter = new EventsAdapter(eventos);
+        recyclerView.setAdapter(adapter);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_events, container, false);
+        return view;
+    }
+
+    private void PopulateEventos() {
+        /*
+        * new Event("roger","direccio","creador",new Latlon(3.0,4.0),data,usuaris,30.0,10.0,"descripcio Curta","descripcio LLarga",new Latlon(3.0,5.0));
+
+         * */
+        Date data = new Date();
+        List<String> usuaris= new ArrayList<String>();
+        usuaris.add("usuari1");
+        usuaris.add("usuari2");
+        eventos.add(new Event("roger","direccio","creador",new Latlon(3.0,4.0),data,usuaris,30.0,10.0,"descripcio Curta","descripcio LLarga",new Latlon(3.0,5.0)));
+        eventos.add(new Event("Puntacana","direccio","creador",new Latlon(3.0,4.0),data,usuaris,30.0,10.0,"descripcio Curta","descripcio LLarga",new Latlon(3.0,5.0)));
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
