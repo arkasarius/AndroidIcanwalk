@@ -75,12 +75,13 @@
             android:text="5/15" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="20dp"
-            android:text="Participar" />
+            android:text="Participar"
+            tools:ignore="OnClick" />
     </FrameLayout>
 
 </LinearLayout>

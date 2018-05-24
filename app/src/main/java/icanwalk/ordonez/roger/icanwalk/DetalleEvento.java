@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -29,7 +31,7 @@ import java.util.ArrayList;
  * Use the {@link DetalleEvento#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DetalleEvento extends Fragment {
+public class DetalleEvento extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -41,6 +43,7 @@ public class DetalleEvento extends Fragment {
     private String mParam2;
     private int positionEvento;
     ArrayList<Event> eventos;
+    ArrayList<String> UIDS;
     private OnFragmentInteractionListener mListener;
 
     public DetalleEvento() {
@@ -89,18 +92,20 @@ public class DetalleEvento extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ///display info data
 
         final FirebaseDatabase database=FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("eventos");
+        final DatabaseReference myRef = database.getReference("eventos");
         eventos = new ArrayList<>();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 eventos.clear();
+                UIDS=new ArrayList<>();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    UIDS.add(snapshot.getKey());
                     Event event = snapshot.getValue(Event.class);
                     eventos.add(event);
                 }
@@ -113,6 +118,27 @@ public class DetalleEvento extends Fragment {
                 usuaricreador=getActivity().findViewById(R.id.idcreador);
                 descripcio=getActivity().findViewById(R.id.iddescripcio);
                 usuaris=getActivity().findViewById(R.id.idusers);
+                Button button = getActivity().findViewById(R.id.buto);
+                button.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        Toast.makeText(getContext(), UIDS.get(positionEvento), Toast.LENGTH_SHORT).show();
+                        eventos.get(positionEvento);
+                        String theID = UIDS.get(positionEvento);
+                        Event x =eventos.get(positionEvento);
+                        List<String> popu = x.getUsuarisRegistrats();
+                        popu.add("rogerAndroid");
+                        x.setUsuarisRegistrats(popu);
+                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                        mDatabase.child("eventos").child(theID).child("usuarisRegistrats").child(Integer.toString(popu.size())).setValue("rogerproaso");
+
+
+
+                        //myRef.getKey();
+                    }
+                });
 
                 nomevent.setText(a.getNom());
                 direccio.setText(a.getDireccio());
@@ -120,6 +146,7 @@ public class DetalleEvento extends Fragment {
                 usuaricreador.setText(a.getCreador());
                 descripcio.setText(a.getDescripcioLlarga());
                 usuaris.setText(a.getUsuarisRegistrats().size()+"/"+a.getLimitUsuaris());
+
 
             }
 
@@ -154,6 +181,11 @@ public class DetalleEvento extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     /**
