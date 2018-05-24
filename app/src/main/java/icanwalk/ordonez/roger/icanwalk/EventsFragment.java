@@ -142,8 +142,9 @@ public class EventsFragment extends Fragment {
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), eventos.get(recyclerView.getChildAdapterPosition(v)).getNom(), Toast.LENGTH_SHORT).show();
-                Fragment frag = new DetalleEvento();
+                //Toast.makeText(getContext(), eventos.get(recyclerView.getChildAdapterPosition(v)).getNom(), Toast.LENGTH_SHORT).show();
+                int itemPosition = recyclerView.getChildLayoutPosition(v);
+                Fragment frag = DetalleEvento.newInstance(itemPosition);
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.fragment, frag);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
