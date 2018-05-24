@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "135069599248",
+    "firebase_url": "https://web3-cordova.firebaseio.com",
+    "project_id": "web3-cordova",
+    "storage_bucket": "web3-cordova.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135069599248:android:1e61a85df0062529",
+        "android_client_info": {
+          "package_name": "es.icanwalk.www"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135069599248-hn8kqk1lbe6t4fh9cj4e2fg8pp9lhd2d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoyq-kJJXAG7nBBg5njOpkX3M3N7WDzCU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135069599248:android:dd6a76b10cd60daf",
+        "android_client_info": {
+          "package_name": "icanwalk.ordonez.roger.icanwalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135069599248-7jb6ns4uohmmj0efasfmgc62cp43sdpr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "icanwalk.ordonez.roger.icanwalk",
+            "certificate_hash": "948abd146794e0709be7024744e377b955c71f60"
+          }
+        },
+        {
+          "client_id": "135069599248-hn8kqk1lbe6t4fh9cj4e2fg8pp9lhd2d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoyq-kJJXAG7nBBg5njOpkX3M3N7WDzCU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135069599248-hn8kqk1lbe6t4fh9cj4e2fg8pp9lhd2d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
