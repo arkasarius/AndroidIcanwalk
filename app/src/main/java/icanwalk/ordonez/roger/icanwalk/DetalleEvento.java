@@ -131,7 +131,7 @@ public class DetalleEvento extends Fragment implements View.OnClickListener{
                         List<String> popu = x.getUsuarisRegistrats();
                         popu.add("rogerAndroid");
                         x.setUsuarisRegistrats(popu);
-                        Toast.makeText(getContext(), Integer.toString(popu.size()), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(), Integer.toString(popu.size()), Toast.LENGTH_SHORT).show();
                         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
                         mDatabase.child("eventos").child(theID).child("usuarisRegistrats").child(Integer.toString(popu.size()-1)).setValue("rogerproaso");
 
