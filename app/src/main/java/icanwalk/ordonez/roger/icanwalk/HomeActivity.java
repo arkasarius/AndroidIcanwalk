@@ -18,7 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, PerfilFragment.OnFragmentInteractionListener, EventsFragment.OnFragmentInteractionListener, DetalleEvento.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PerfilFragment.OnFragmentInteractionListener, EventsFragment.OnFragmentInteractionListener, DetalleEvento.OnFragmentInteractionListener, CalendarFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +98,10 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
-
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            Fragment perfil = CalendarFragment.newInstance("bla", "bla");
+            transaction.replace(R.id.fragment, perfil);
+            transaction.commit();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

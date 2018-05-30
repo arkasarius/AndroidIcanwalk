@@ -111,7 +111,7 @@ public class DetalleEvento extends Fragment implements View.OnClickListener{
                 }
                 Event a = eventos.get(positionEvento);
                 //Toast.makeText(getContext(), Integer.toString(positionEvento), Toast.LENGTH_SHORT).show();
-                TextView nomevent,direccio,dataevent,usuaricreador,descripcio,usuaris;
+                TextView nomevent,direccio,dataevent,usuaricreador,descripcio,usuaris,preu;
                 nomevent=getActivity().findViewById(R.id.idnomevent);
                 direccio=getActivity().findViewById(R.id.iddireccio);
                 dataevent=getActivity().findViewById(R.id.iddata);
@@ -119,6 +119,7 @@ public class DetalleEvento extends Fragment implements View.OnClickListener{
                 descripcio=getActivity().findViewById(R.id.iddescripcio);
                 usuaris=getActivity().findViewById(R.id.idusers);
                 Button button = getActivity().findViewById(R.id.buto);
+                preu = getActivity().findViewById(R.id.PreuID);
                 button.setOnClickListener(new View.OnClickListener()
                 {
                     @Override
@@ -147,6 +148,7 @@ public class DetalleEvento extends Fragment implements View.OnClickListener{
                 usuaricreador.setText(a.getCreador());
                 descripcio.setText(a.getDescripcioLlarga());
                 usuaris.setText(a.getUsuarisRegistrats().size()+"/"+a.getLimitUsuaris());
+                preu.setText(Double.toString(a.getPreu())+"€");
 
 
             }
