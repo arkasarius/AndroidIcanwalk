@@ -18,7 +18,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, PerfilFragment.OnFragmentInteractionListener, EventsFragment.OnFragmentInteractionListener, DetalleEvento.OnFragmentInteractionListener, CalendarFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        PerfilFragment.OnFragmentInteractionListener,
+        EventsFragment.OnFragmentInteractionListener,
+        DetalleEvento.OnFragmentInteractionListener,
+        CalendarFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
